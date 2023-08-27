@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from './components/Navbar';
 import BookList from './components/BookList';
+import Form from './components/Form';
 
 function App() {
 
@@ -21,13 +22,16 @@ function App() {
         <Navbar brand='Library App'/>
         <div className='container'>
           <div className='row'>
+           
             <div className='col-7'>
                 <h2 style={{textAlign:'center'}}>Book List</h2>
                 <BookList books={books}/>
             </div>
             <div className='col-5'>
                  <h2 style={{textAlign:'center'}}>Book Form</h2>
+                 <Form />
             </div>
+         
           </div>
         </div>     
       </>
