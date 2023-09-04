@@ -6,9 +6,15 @@ import Form from './components/Form';
 
 function App() {
 
+  const [book, setBook] = useState( {
+      titulo: '',
+      autor: '',
+      edicion: ''
+  })
+
   const [books, setBooks] = useState([]);
   
-  useEffect(() => {
+  useEffect( () => {
     const getBooks = () => {
       fetch(`http://localhost:9000/api`)
         .then(res => res.json())
@@ -29,7 +35,7 @@ function App() {
             </div>
             <div className='col-5'>
                  <h2 style={{textAlign:'center'}}>Book Form</h2>
-                 <Form />
+                 <Form book={book} setBook={setBook}/>
             </div>
          
           </div>
