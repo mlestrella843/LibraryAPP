@@ -26,7 +26,7 @@ const Form = ( { book, setBook }) => {
         }
 
         fetch('http://localhost:9000/api', requestInit)
-        .then(res => res.json())
+        .then(res => res.text())
         .then(res => console.log(res)) 
 
         //reiniciando state del libro

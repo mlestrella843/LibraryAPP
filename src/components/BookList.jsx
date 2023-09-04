@@ -1,6 +1,18 @@
 import React from 'react'
 
-const BookList = ({books}) => {
+const BookList = ({books, setListUpdated}) => {
+
+    const handleDelete = id => {
+        const requestInit = {
+            method: 'DELETE'
+        }
+        fetch('http://localhost:9000/api/' + id, requestInit)
+        .then(res => res.text())
+        .then(res => console.log(res)) 
+
+        setListUpdated(true)
+    }
+
     return ( 
         <>
             <table className='table'>
@@ -21,7 +33,7 @@ const BookList = ({books}) => {
                             <td>{book.edicion}</td>
                             <td>
                                 <div className='mb-3'>
-                                    <button className='btn btn-danger'>Delete</button>
+                                    <button onClick={() => handleDelete(book.id)} className='btn btn-danger'>Delete</button>
 
                                 </div>
                             </td>
