@@ -15,12 +15,26 @@ const Form = ( { book, setBook }) => {
         edicion = parseInt(edicion, 10);
         //data validation
         if( titulo === '' || autor === '' || edicion <= 0 ){
-            alert("Todos los campos son obligatorios");
+            alert("Todos los campos son obligatorios")
+            return
         }
+        //consulta
+        const requestInit = {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(book)
+        }
+        fetch('http://localhost:9000/api', requestInit)
+        .then(res => res.json())
+        .then(res => console.log(res)) 
 
+        //reiniciando state del libro
+        setBook = ({
+            titulo: '',
+            autor: '',
+            edicion: 0
+        })
     }
-
-
 
   return ( 
     <> 

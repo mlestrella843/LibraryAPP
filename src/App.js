@@ -9,14 +9,14 @@ function App() {
   const [book, setBook] = useState( {
       titulo: '',
       autor: '',
-      edicion: ''
+      edicion: 0
   })
 
   const [books, setBooks] = useState([]);
   
   useEffect( () => {
     const getBooks = () => {
-      fetch(`http://localhost:9000/api`)
+      fetch('http://localhost:9000/api')
         .then(res => res.json())
         .then(res => setBooks(res)) 
     }
