@@ -1,10 +1,31 @@
 import React from 'react'
 
-const BookList = ({books, setListUpdated}) => {
+const BookList = ({book, books, setListUpdated}) => {
 
     const handleDelete = id => {
         const requestInit = {
             method: 'DELETE'
+        }
+        fetch('http://localhost:9000/api/' + id, requestInit)
+        .then(res => res.text())
+        .then(res => console.log(res)) 
+
+        setListUpdated(true)
+    }
+
+    let { titulo, autor, edicion } = book
+
+    const handleUpdate = id => {
+        edicion = parseInt(edicion, 10);
+        //data validation
+        if( titulo === '' || autor === '' || edicion <= 0 ){
+            alert("Todos los campos son obligatorios")
+            return
+        }
+        const requestInit = {
+            method: 'PUT',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(book)
         }
         fetch('http://localhost:9000/api/' + id, requestInit)
         .then(res => res.text())
@@ -34,6 +55,7 @@ const BookList = ({books, setListUpdated}) => {
                             <td>
                                 <div className='mb-3'>
                                     <button onClick={() => handleDelete(book.id)} className='btn btn-danger'>Delete</button>
+                                    <button onClick={() => handleUpdate(book.id)} className='mt-2 btn btn-dark'>Update</button>
 
                                 </div>
                             </td>
