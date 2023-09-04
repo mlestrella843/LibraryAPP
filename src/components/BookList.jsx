@@ -15,10 +15,16 @@ const BookList = ({books}) => {
                 <tbody>             
                      {books.map(book => (
                         <tr key={book.id}>
-                            <th>{book.id}</th>
-                            <th>{book.titulo}</th>
-                            <th>{book.autor}</th>
-                            <th>{book.edicion}</th>
+                            <td>{book.id}</td>
+                            <td>{book.titulo}</td>
+                            <td>{book.autor}</td>
+                            <td>{book.edicion}</td>
+                            <td>
+                                <div className='mb-3'>
+                                    <button className='btn btn-danger'>Delete</button>
+
+                                </div>
+                            </td>
                         </tr>
                      )                  
                      )}             

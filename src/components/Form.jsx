@@ -24,6 +24,7 @@ const Form = ( { book, setBook }) => {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(book)
         }
+
         fetch('http://localhost:9000/api', requestInit)
         .then(res => res.json())
         .then(res => console.log(res)) 
@@ -41,15 +42,15 @@ const Form = ( { book, setBook }) => {
         <form onSubmit={handleSubmit}>
             <div className='mb-3'>
                 <label htmlFor='title'className='form-label'>Title</label>
-                <input name="titulo" onChange={handleChange} type='text' id='title' className='form-control'/>
+                <input value={titulo} name="titulo" onChange={handleChange} type='text' id='title' className='form-control'/>
             </div>
             <div className='mb-3'>
                 <label htmlFor='author'className='form-label'>Author</label>
-                <input name="autor" onChange={handleChange} type='text' id='author' className='form-control'/>
+                <input value={autor} name="autor" onChange={handleChange} type='text' id='author' className='form-control'/>
             </div>
             <div className='mb-3'>
                 <label htmlFor='edition'className='form-label'>Edition</label>
-                <input name="edicion" onChange={handleChange} type='number' id='edition' className='form-control'/>
+                <input value={edicion} name="edicion" onChange={handleChange} type='number' id='edition' className='form-control'/>
             </div>
             <button type="submit" className='btn btn-primary'>Submit</button>
         </form>   
