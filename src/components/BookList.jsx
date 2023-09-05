@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BookList = ({book, books, setListUpdated}) => {
+const BookList = ({book, setBook, books, setListUpdated}) => {
 
     const handleDelete = id => {
         const requestInit = {
@@ -31,6 +31,12 @@ const BookList = ({book, books, setListUpdated}) => {
         .then(res => res.text())
         .then(res => console.log(res)) 
 
+        setBook = ({
+            titulo: '',
+            autor: '',
+            edicion: 0
+        })
+
         setListUpdated(true)
     }
 
@@ -55,7 +61,7 @@ const BookList = ({book, books, setListUpdated}) => {
                             <td>
                                 <div className='mb-3'>
                                     <button onClick={() => handleDelete(book.id)} className='btn btn-danger'>Delete</button>
-                                    <button onClick={() => handleUpdate(book.id)} className='mt-2 btn btn-dark'>Update</button>
+                                    <button onClick={() => handleUpdate(book.id)} className='ms-2 btn btn-dark'>Update</button>
 
                                 </div>
                             </td>

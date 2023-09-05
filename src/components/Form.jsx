@@ -52,7 +52,7 @@ const Form = ( { book, setBook }) => {
                 <label htmlFor='edition'className='form-label'>Edition</label>
                 <input value={edicion} name="edicion" onChange={handleChange} type='number' id='edition' className='form-control'/>
             </div>
-            <button type="submit" className='btn btn-primary'>Submit</button>
+            <button type="submit" className='btn btn-primary'>Add new book</button>
         </form>   
      </>
   );
